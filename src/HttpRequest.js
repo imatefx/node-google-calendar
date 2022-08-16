@@ -31,6 +31,8 @@ class HttpRequest {
 			useQuerystring: true
 		};
 
+		console.log('HttpRequest.js:35', 'get - options:', options);
+
 		return requestWithJWT(options);
 	}
 
@@ -46,6 +48,8 @@ class HttpRequest {
 			json: true
 		};
 
+		console.log('HttpRequest.js:52', 'post - options:', options);
+
 		return requestWithJWT(options);
 	}
 
@@ -59,6 +63,8 @@ class HttpRequest {
 			qs: querystring,
 			json: true
 		};
+
+		console.log('HttpRequest.js:68', 'postWithQueryString - options:', options);
 
 		return requestWithJWT(options);
 	}
@@ -75,6 +81,8 @@ class HttpRequest {
 			json: true
 		};
 
+		console.log('HttpRequest.js:84', 'put - options:', options);
+
 		return requestWithJWT(options);
 	}
 	
@@ -90,6 +98,9 @@ class HttpRequest {
 			json: true
 		};
 
+
+		console.log('HttpRequest.js:102', 'patch - options:', options);
+
 		return requestWithJWT(options);
 	}
 
@@ -102,6 +113,8 @@ class HttpRequest {
 			jwt: jwt,
 			qs: params
 		};
+
+		console.log('HttpRequest.js:118', 'delete - options:', options);
 
 		return requestWithJWT(options)
 	}
