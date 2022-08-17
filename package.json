@@ -9,7 +9,7 @@
 	},
 	"dependencies": {
 		"bluebird": "^3.4.1",
-		"google-oauth-jwt": "^0.2.0",
+		"google-oauth-jwt": "github:imatefx/google-oauth-jwt",
 		"request-promise": "^4.1.0"
 	},
 	"devDependencies": {

@@ -1,7 +1,10 @@
 const Promise = require('bluebird');
-const requestWithJWT = Promise.promisify(require('google-oauth-jwt').requestWithJWT());
 
 class HttpRequest {
+
+	constructor(){
+		this.requestWithJWT = Promise.promisify(require('google-oauth-jwt').requestWithJWT());
+	}
 
 	_checkBasicRequired(url, jwt) {
 		if (url === undefined) {
@@ -33,7 +36,7 @@ class HttpRequest {
 
 		console.log('HttpRequest.js:35', 'get - options:', options);
 
-		return requestWithJWT(options);
+		return this.requestWithJWT(options);
 	}
 
 	post(url, params, jwt, query) {
@@ -50,7 +53,7 @@ class HttpRequest {
 
 		console.log('HttpRequest.js:52', 'post - options:', options);
 
-		return requestWithJWT(options);
+		return this.requestWithJWT(options);
 	}
 
 	postWithQueryString(url, querystring, jwt) {
@@ -66,7 +69,7 @@ class HttpRequest {
 
 		console.log('HttpRequest.js:68', 'postWithQueryString - options:', options);
 
-		return requestWithJWT(options);
+		return this.requestWithJWT(options);
 	}
 
 	put(url, params, jwt, query) {
@@ -83,7 +86,7 @@ class HttpRequest {
 
 		console.log('HttpRequest.js:84', 'put - options:', options);
 
-		return requestWithJWT(options);
+		return this.requestWithJWT(options);
 	}
 	
 	patch(url, params, jwt, query) {
@@ -101,7 +104,7 @@ class HttpRequest {
 
 		console.log('HttpRequest.js:102', 'patch - options:', options);
 
-		return requestWithJWT(options);
+		return this.requestWithJWT(options);
 	}
 
 	delete(url, params, jwt) {
@@ -116,7 +119,7 @@ class HttpRequest {
 
 		console.log('HttpRequest.js:118', 'delete - options:', options);
 
-		return requestWithJWT(options)
+		return this.requestWithJWT(options)
 	}
 }
 
