@@ -7,7 +7,6 @@ const calEvents = require('./Events');
 const calSettings = require('./Settings');
 const calFreeBusy = require('./FreeBusy');
 const Request = require('./HttpRequest');
-const httpRequest = new Request();
 
 const gcalBaseUrl = 'https://www.googleapis.com/calendar/v3/';
 const calUrl = `${gcalBaseUrl}calendars/`;
@@ -37,15 +36,17 @@ class CalendarAPI {
 			throw new Error('Missing keyfile for Google OAuth; Check if defined in Settings file');
 		}
 
+		this.httpRequest = new Request();
+
 		this._timezone = config.timezone;
-		this._calendars = new cal(httpRequest, this._JWT, calUrl);
-		this._calendarList = new calList(httpRequest, this._JWT, calListUrl);
-		this._acl = new calAcl(httpRequest, this._JWT, calUrl);
-		this._channels = new calChannels(httpRequest, this._JWT, channelUrl);
-		this._colors = new calColors(httpRequest, this._JWT, colourUrl);
-		this._events = new calEvents(httpRequest, this._JWT, calUrl);
-		this._settings = new calSettings(httpRequest, this._JWT, settingUrl);
-		this._freeBusy = new calFreeBusy(httpRequest, this._JWT, freebusyUrl, this._timezone);
+		this._calendars = new cal(this.httpRequest, this._JWT, calUrl);
+		this._calendarList = new calList(this.httpRequest, this._JWT, calListUrl);
+		this._acl = new calAcl(this.httpRequest, this._JWT, calUrl);
+		this._channels = new calChannels(this.httpRequest, this._JWT, channelUrl);
+		this._colors = new calColors(this.httpRequest, this._JWT, colourUrl);
+		this._events = new calEvents(this.httpRequest, this._JWT, calUrl);
+		this._settings = new calSettings(this.httpRequest, this._JWT, settingUrl);
+		this._freeBusy = new calFreeBusy(this.httpRequest, this._JWT, freebusyUrl, this._timezone);
 	}
 
 	get Events() {
